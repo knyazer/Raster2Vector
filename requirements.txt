@@ -1,0 +1,6 @@
+tensorflow==2.2
+opencv-python
+opencv-contrib-python
+pillow
+scikit-image
+numpy
