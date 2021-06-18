@@ -1,7 +1,7 @@
 # Raster2Vector
 
 ## Intro
-Repository contains all files required to apply robust transformation. It uses DexiNed23 as edge detector and SLIC algorithm to detect clusters of similar pixels.
+Repository contains all files required to apply image robust transformation. It uses DexiNed23 as edge detector and SLIC algorithm to detect clusters of similar pixels. This approach could be taken as a base algorithm of an automatic painting system.
 
 ## Examples
 ![Ex1](readme/res.png)
