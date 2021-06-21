@@ -16,3 +16,4 @@ To run the program Python3.8 required. Other packages can be installed using
 ```
 pip3 install -r requirements.txt
 ```
+Also you need to download [model weights](https://drive.google.com/file/d/19Gwa6egqzNolvX4eUoXn-SjRKzxB68AA/view?usp=sharing), and put it into src folder
