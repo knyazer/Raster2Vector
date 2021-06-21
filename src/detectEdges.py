@@ -51,11 +51,7 @@ def processEdges(edges):
 
     edges = 255 - cv.adaptiveThreshold(edges, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
 
-    #cv.imshow("Thresholded", edges)
-
-    #thinned = cv.ximgproc.thinning(edges,None,cv.ximgproc.THINNING_GUOHALL)
-
-    #cv.imshow("Thinned", thinned)
+    #edges = cv.ximgproc.thinning(edges, None, cv.ximgproc.THINNING_GUOHALL)
 
     contours, hierarchy = cv.findContours(edges,
         cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)

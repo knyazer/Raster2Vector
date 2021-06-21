@@ -13,14 +13,25 @@ def autoscale(img):
         wn = 512 * (w / h)
     return cv.resize(img, (int(hn), int(wn)))
 
-img = cv.imread("src/lena_std.tif")
+img = cv.imread("data/spb.jpg")
 img = autoscale(img)
 
-pic, contours = processEdges(detectEdges(img))
+picEdges, contoursMain = processEdges(detectEdges(img))
+for i in range(len(contoursMain)):
+    contoursMain[i] = np.reshape(contoursMain[i], (contoursMain[i].shape[0], contoursMain[i].shape[2]))
 
-picFilling = fill(img)
+clearingArea = 255 - cv.dilate(picEdges, np.ones((7, 7)))
 
-res = 255 - cv.bitwise_or(pic, picFilling)
+contoursFilling = fill(img, clearingArea != 0)
+
+contours = contoursFilling + contoursMain
+
+res = np.zeros(img.shape[:2], dtype=np.uint8)
+for contour in contours:
+    for i in range(contour.shape[0] - 1):
+        cv.line(res, (contour[i][0], contour[i][1]), (contour[i + 1][0], contour[i + 1][1]), 255, thickness=1)
+
+res = 255 - res
 
 output = np.concatenate((img, np.stack((res,res,res), axis=2)), axis=1)
 
